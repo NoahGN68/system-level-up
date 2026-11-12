@@ -760,7 +760,6 @@ export default function App() {
     );
     const diff = 100 - currentSum;
     if (diff === 0) return;
-    // Ajuster sur la dernière quête ou répartir
     setTomorrowQuests((prev) => {
       const copy = [...prev];
       const lastIdx = copy.length - 1;
@@ -1208,6 +1207,10 @@ export default function App() {
             linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
           background-size: 36px 36px;
         }
+        iframe[title*="Netlify"], [data-netlify-deploy-id], #netlify-identity-widget {
+          display: none !important;
+          pointer-events: none !important;
+        }
       `}</style>
 
       {/* ==========================================
@@ -1298,7 +1301,6 @@ export default function App() {
               </button>
             </div>
 
-            {/* ✅ APRÈS (Code corrigé) */}
             <div className="aspect-video w-full bg-slate-950 rounded-lg overflow-hidden border-2 border-[#00E5FF]/50 shadow-[0_0_40px_rgba(0,229,255,0.2)]">
               {getEmbedUrl(focusedVideo.url) ? (
                 <iframe
@@ -1489,7 +1491,7 @@ export default function App() {
       {/* ==========================================
           ZONE PRINCIPALE DE CONTENU
           ========================================== */}
-      <main className="flex-1 hud-grid-bg pb-24 md:pb-10 overflow-y-auto">
+      <main className="flex-1 hud-grid-bg pb-28 md:pb-10 overflow-y-auto">
         {/* Barre supérieure Mobile + Simulateur Rapide */}
         <header className="sticky top-0 z-30 bg-[#07090E]/90 backdrop-blur-md border-b border-cyan-500/20 px-4 py-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
@@ -2315,11 +2317,9 @@ export default function App() {
                   <p>
                     1. Cochez une tâche ou préparez votre journée du lendemain.
                     <br />
-                    2. Cliquez sur <strong>
-                      Télécharger le Fond d’Écran
-                    </strong>{' '}
-                    et définissez-le sur votre écran de verrouillage en 2
-                    secondes.
+                    2. Cliquez sur{' '}
+                    <strong>Télécharger le Fond d’Écran</strong> et
+                    définissez-le sur votre écran de verrouillage en 2 secondes.
                   </p>
                 </div>
               </div>
@@ -2413,7 +2413,7 @@ export default function App() {
                   />
                   <input
                     type="text"
-                    placeholder="Lien YouTube (vidéo,shortsou Instagram (reel, post)..."
+                    placeholder="Lien YouTube (vidéo, shorts) ou Instagram (reel, post)..."
                     value={newVideoUrl}
                     onChange={(e) => setNewVideoUrl(e.target.value)}
                     className="md:col-span-4 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm font-rajdhani text-white"
@@ -2708,7 +2708,7 @@ export default function App() {
       {/* ==========================================
           BOTTOM NAVIGATION BAR (MOBILE)
           ========================================== */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0A0E17]/95 backdrop-blur-lg border-t border-cyan-500/30 flex items-center justify-around py-2 px-1">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0A0E17]/95 backdrop-blur-lg border-t border-cyan-500/30 flex items-center justify-around pt-2 pb-6 px-1">
         {[
           { id: 'dashboard', label: 'QG', icon: Sword },
           { id: 'planner', label: 'Demain', icon: Calendar },
